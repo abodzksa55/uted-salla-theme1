@@ -1,0 +1,45 @@
+{# views/pages/product.twig #}
+{% extends "layouts/base.twig" %}
+{% block title %}{{ product.name }} - {{ store.name }}{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container grid grid-2">
+    <div class="card">
+      {{ product.gallery() }}
+    </div>
+    <div>
+      <div class="badge">{{ 'bought_times'|t }} {{ product.sold_count }}</div>
+      <h1 class="section-title">{{ product.name }}</h1>
+      <div class="price-row"><span class="price">{{ product.price }}</span></div>
+      {{ product.add_to_cart_form(button_class='btn btn-primary') }}
+      <ul class="checklist">
+        <li>{{ 'fast_delivery'|t }}</li>
+        <li>{{ 'support'|t }}</li>
+        <li>{{ 'secure_payment'|t }}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2 class="section-title">{{ 'description'|t }}</h2>
+    <div class="card">
+      {{ product.description }}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">{{ 'customer_reviews'|t }}</h2>
+    <div class="reviews">
+      {% for review in product.reviews() %}
+        <div class="card review"><div class="stars">{% for i in 1..5 %}<span>{{ i <= review.rating ? '★' : '☆' }}</span>{% endfor %}</div><p>{{ review.comment }}</p><div class="meta">{{ review.author }}</div></div>
+      {% else %}
+        <div class="muted">{{ 'no_reviews'|t }}</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

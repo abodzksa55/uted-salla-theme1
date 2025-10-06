@@ -1,0 +1,22 @@
+{# views/layouts/base.twig #}
+<!DOCTYPE html>
+<html lang="{{ locale.code }}" dir="{{ locale.direction }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ store.name }}{% endblock %}</title>
+    <link rel="icon" href="{{ asset('assets/images/icon.webp') }}" type="image/webp">
+    <link rel="stylesheet" href="{{ asset('assets/css/theme.css') }}">
+    {% block head %}{% endblock %}
+  </head>
+  <body class="uted-theme">
+    {% include 'components/topbar.twig' %}
+    {% include 'components/header.twig' %}
+    <main id="main">
+      {% block content %}{% endblock %}
+    </main>
+    {% include 'components/footer.twig' %}
+    <script src="{{ asset('assets/js/theme.js') }}"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

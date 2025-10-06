@@ -1,0 +1,21 @@
+{# views/pages/collection.twig #}
+{% extends "layouts/base.twig" %}
+{% block title %}{{ collection.name }} - {{ store.name }}{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="section-title">{{ collection.name }}</h1>
+    <div class="grid grid-3">
+      {% for product in collection.products.paginate(12) %}
+      <article class="card product">
+        <a href="{{ product.url }}"><img src="{{ product.image }}" alt="{{ product.name }}"></a>
+        <h3><a href="{{ product.url }}">{{ product.name }}</a></h3>
+        <div class="price-row"><span class="price">{{ product.price }}</span></div>
+        {{ product.add_to_cart_button(class='btn btn-small') }}
+      </article>
+      {% endfor %}
+    </div>
+    {{ paginate() }}
+  </div>
+</section>
+{% endblock %}

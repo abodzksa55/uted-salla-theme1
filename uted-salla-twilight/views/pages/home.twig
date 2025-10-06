@@ -1,0 +1,58 @@
+{# views/pages/home.twig #}
+{% extends "layouts/base.twig" %}
+{% block title %}{{ store.name }} - {{ 'home'|t }}{% endblock %}
+{% block content %}
+<section class="hero section">
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <h1>{{ 'welcome_to'|t }} {{ store.name }}</h1>
+      <p class="muted">{{ 'hero_subtitle'|t }}</p>
+      <div class="cta-row">
+        <a href="{{ url('collections') }}" class="btn btn-primary">{{ 'shop_now'|t }}</a>
+        <a href="{{ url('pages', {slug:'about'}) }}" class="btn btn-ghost">{{ 'learn_more'|t }}</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="{{ asset(theme.settings.hero_image) }}" alt="Hero" class="hero-img">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">{{ 'featured_products'|t }}</h2>
+    <div class="grid grid-3">
+      {% for product in products.featured(6) %}
+      <article class="card product">
+        <a href="{{ product.url }}"><img src="{{ product.image }}" alt="{{ product.name }}"></a>
+        <h3><a href="{{ product.url }}">{{ product.name }}</a></h3>
+        <p class="muted">{{ product.short_description }}</p>
+        <div class="price-row">
+          <span class="price">{{ product.price }}</span>
+          {{ product.add_to_cart_button(class='btn btn-small') }}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2 class="section-title">{{ 'customer_reviews'|t }}</h2>
+    <div class="reviews">
+      {% for review in reviews.latest(3) %}
+       <div class="card review">
+        <div class="stars" aria-label="{{ review.rating }} stars">
+          {% for i in 1..5 %}<span>{{ i <= review.rating ? '★' : '☆' }}</span>{% endfor %}
+        </div>
+        <p>{{ review.comment }}</p>
+        <div class="meta"><span>{{ review.author }}</span></div>
+       </div>
+      {% else %}
+       <div class="muted">{{ 'no_reviews'|t }}</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

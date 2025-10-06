@@ -1,0 +1,18 @@
+{# views/pages/cart.twig #}
+{% extends "layouts/base.twig" %}
+{% block title %}{{ 'cart'|t }} - {{ store.name }}{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="section-title">{{ 'cart'|t }}</h1>
+    {{ cart.table() }}
+    <div class="card" style="margin-top:18px">
+      <div class="price-row">
+        <strong>{{ 'total'|t }}</strong>
+        <span class="price">{{ cart.total }}</span>
+      </div>
+      {{ cart.checkout_button(class='btn btn-primary') }}
+    </div>
+  </div>
+</section>
+{% endblock %}

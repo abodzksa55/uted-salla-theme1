@@ -1,0 +1,13 @@
+{# views/components/topbar.twig #}
+<div class="topbar">
+  <div class="container">
+    <div class="logo">
+      <img src="{{ asset(theme.settings.logo) }}" alt="UTED" class="brand-logo">
+      <strong>{{ store.name }}</strong>
+    </div>
+    <div class="switchers">
+      {{ locale.switcher() }}
+      {{ currency.switcher() }}
+    </div>
+  </div>
+</div>

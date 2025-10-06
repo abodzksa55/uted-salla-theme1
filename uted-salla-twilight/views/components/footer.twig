@@ -1,0 +1,10 @@
+{# views/components/footer.twig #}
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© {{ "now"|date("Y") }} {{ store.name }} · {{ 'all_rights'|t }}</p>
+    <div class="socials">
+      {% if store.socials.twitter %}<a href="{{ store.socials.twitter }}">Twitter</a>{% endif %}
+      {% if store.socials.instagram %}<a href="{{ store.socials.instagram }}">Instagram</a>{% endif %}
+    </div>
+  </div>
+</footer>
