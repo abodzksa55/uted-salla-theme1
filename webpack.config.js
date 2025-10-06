@@ -17,13 +17,14 @@ module.exports = (env, argv) => {
     plugins: [
       new MiniCssExtractPlugin({ filename: 'assets/css/theme.css' }),
       new CopyWebpackPlugin({
-        patterns: [
-          { from: 'src/images', to: 'assets/images' },
-          { from: 'src/views', to: 'views' },
-          { from: 'src/locales', to: 'locales', noErrorOnMissing: true },
-          { from: 'twilight.json', to: 'twilight.json' },
-        ],
-      }),
+  patterns: [
+    { from: 'src/images', to: 'assets/images', noErrorOnMissing: true },
+    { from: 'src/views',  to: 'views' },
+    { from: 'src/locales', to: 'locales', noErrorOnMissing: true },
+    { from: 'twilight.json', to: 'twilight.json' },
+  ],
+}),
+
     ],
     optimization: { minimize: isProd, minimizer: [new TerserPlugin({ extractComments: false })] },
     devtool: isProd ? false : 'source-map',
