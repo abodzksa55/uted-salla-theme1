@@ -1,0 +1,37 @@
+{% extends "layouts/base.twig" %}
+{% block title %}{{ store.name }} - {{ 'home'|t }}{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container grid md:grid-cols-2 gap-6 items-center">
+    <div>
+      <h1 class="text-4xl font-bold mb-2">{{ 'welcome_to'|t }} {{ store.name }}</h1>
+      <p class="text-[color:var(--muted)] mb-4">{{ 'hero_subtitle'|t }}</p>
+      <div class="flex gap-3">
+        <a href="{{ url('collections') }}" class="btn btn-primary">{{ 'shop_now'|t }}</a>
+        <a href="{{ url('pages', {slug:'about'}) }}" class="btn">{{ 'learn_more'|t }}</a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{{ asset(theme.settings.hero_image) }}" alt="Hero" class="rounded-xl w-full">
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <h2 class="text-2xl font-semibold mb-4">{{ 'featured_products'|t }}</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      {% for product in products.featured(6) %}
+      <article class="card">
+        <a href="{{ product.url }}"><img src="{{ product.image }}" alt="{{ product.name }}" class="rounded-xl"></a>
+        <h3 class="mt-3 font-semibold"><a href="{{ product.url }}">{{ product.name }}</a></h3>
+        <p class="text-[color:var(--muted)]">{{ product.short_description }}</p>
+        <div class="flex items-center justify-between mt-2">
+          <span class="font-bold">{{ product.price }}</span>
+          {{ product.add_to_cart_button(class='btn') }}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

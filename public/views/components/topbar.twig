@@ -1,0 +1,11 @@
+<div class="border-b border-white/10 text-[color:var(--muted)]">
+  <div class="container py-1 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <img src="{{ asset(theme.settings.logo) }}" class="w-8 h-8 rounded-lg" alt="{{ store.name }}">
+      <strong>{{ store.name }}</strong>
+    </div>
+    <div class="flex items-center gap-3">
+      {{ locale.switcher() }} {{ currency.switcher() }}
+    </div>
+  </div>
+</div>

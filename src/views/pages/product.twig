@@ -1,0 +1,28 @@
+{% extends "layouts/base.twig" %}
+{% block title %}{{ product.name }} - {{ store.name }}{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container grid md:grid-cols-2 gap-6">
+    <div class="card">{{ product.gallery() }}</div>
+    <div>
+      <div class="text-sm opacity-80 mb-2">{{ 'bought_times'|t }} {{ product.sold_count }}</div>
+      <h1 class="text-2xl font-semibold mb-2">{{ product.name }}</h1>
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-xl font-bold">{{ product.price }}</span>
+      </div>
+      {{ product.add_to_cart_form(button_class='btn btn-primary') }}
+      <ul class="mt-4 list-disc ps-5">
+        <li>{{ 'fast_delivery'|t }}</li>
+        <li>{{ 'support'|t }}</li>
+        <li>{{ 'secure_payment'|t }}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <h2 class="text-2xl font-semibold mb-3">{{ 'description'|t }}</h2>
+    <div class="card">{{ product.description }}</div>
+  </div>
+</section>
+{% endblock %}

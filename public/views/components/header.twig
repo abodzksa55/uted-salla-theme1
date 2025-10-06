@@ -1,0 +1,15 @@
+<header class="sticky top-0 backdrop-blur bg-black/40 border-b border-white/10 z-50">
+  <div class="container py-3 flex items-center justify-between">
+    <a href="{{ url('home') }}" class="flex items-center gap-2 no-underline">
+      <img src="{{ asset(theme.settings.logo) }}" class="w-7 h-7 rounded-lg" alt="{{ store.name }}">
+      <span class="font-bold">{{ store.name }}</span>
+    </a>
+    <nav class="nav hidden md:flex items-center gap-4">
+      <a href="{{ url('home') }}">{{ 'home'|t }}</a>
+      <a href="{{ url('collections') }}">{{ 'collections'|t }}</a>
+      <a href="{{ url('cart') }}">{{ 'cart'|t }} ({{ cart.count }})</a>
+      <a href="{{ url('account') }}" class="btn btn-primary">{{ 'account'|t }}</a>
+    </nav>
+    <button class="md:hidden" id="hamburger" aria-label="Menu">☰</button>
+  </div>
+</header>

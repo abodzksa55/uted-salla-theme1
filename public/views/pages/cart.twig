@@ -1,0 +1,17 @@
+{% extends "layouts/base.twig" %}
+{% block title %}{{ 'cart'|t }} - {{ store.name }}{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="text-2xl font-semibold mb-3">{{ 'cart'|t }}</h1>
+    {{ cart.table() }}
+    <div class="card mt-4">
+      <div class="flex items-center justify-between">
+        <strong>{{ 'total'|t }}</strong>
+        <span class="font-bold">{{ cart.total }}</span>
+      </div>
+      {{ cart.checkout_button(class='btn btn-primary mt-3') }}
+    </div>
+  </div>
+</section>
+{% endblock %}
