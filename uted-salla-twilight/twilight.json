@@ -1,0 +1,26 @@
+{
+    "name": "UTED Gamer Store",
+    "slug": "uted-gamer-store",
+    "version": "1.0.0",
+    "description": "Purple neon gamer theme for Salla Twilight.",
+    "author": "abdullah (@abodz553379)",
+    "license": "MIT",
+    "screenshots": [
+      "assets/images/screenshot-home.png",
+      "assets/images/screenshot-product.png"
+    ],
+    "settings": {
+      "colors": {
+        "primary": "#b076ff",
+        "accent": "#ff6ad5",
+        "background": "#0b0a16",
+        "surface": "#120f2a",
+        "card": "#1a1638",
+        "text": "#f0eaff",
+        "muted": "#c3b8ff"
+      },
+      "logo": "assets/images/icon.webp",
+      "hero_image": "assets/images/hero.jpg"
+    }
+  }
+  
